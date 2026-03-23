@@ -648,7 +648,7 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
     aspect-ratio: 16 / 6; /* flexible height based on width */
     min-height: 180px;
     border: 0;
-    background: #f9f9f9 url("main/main.jpg") center/cover no-repeat;
+    background: transparent url("main/main.jpg") center/cover no-repeat;
     overflow: hidden;
 }
 
@@ -688,7 +688,7 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 
 
 body.dark-mode .header-box {
-    background: #1c212b url("main/main2.jpg") center/cover no-repeat;
+    background: transparent url("main/main2.jpg") center/cover no-repeat;
 }
 
 /* Ensure header content sits above the global star layers */
@@ -1565,7 +1565,7 @@ body.dark-mode .footer-info {
 
     .portfolio-header {
         padding-top: 74px;
-        padding-bottom: 0;
+        padding-bottom: 24px;
     }
 
     .main-title {
