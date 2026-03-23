@@ -676,6 +676,13 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
         min-height: 120px;
         margin-top: 0px;
         margin-bottom: 0px;
+        background-size: contain;
+        background-position: center center;
+    }
+
+    .heart-overlay {
+        width: min(28vw, 120px);
+        height: auto;
     }
 }
 
@@ -1516,9 +1523,37 @@ body.dark-mode .footer-info {
    Small Phones
    ---------------------- */
 @media (max-width: 480px) {
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .main-nav,
+    .portfolio-header,
+    .portfolio-section,
+    .site-footer {
+        padding-left: 14px;
+        padding-right: 14px;
+        box-sizing: border-box;
+    }
+
     .main-title {
         font-size: 32px;
     }
+
+    .header-box,
+    .item-link,
+    .item-image,
+    .portfolio-grid {
+        max-width: 100%;
+    }
+
+    .item-image {
+        background-size: contain;
+        background-position: center center;
+    }
+
     .item-title {
         font-size: 16px;
     }
