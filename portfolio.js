@@ -42,18 +42,18 @@ const portfolioItems = [
                 "design/K&D7.jpg"
             ], cardImage: "design/K&D.jpg" },
         { title: "Industrial Photography", category: "Photography", href: "#", description: "Over 250 industrial product photographs for manufacturers Raboo, K&D, and TheOne.", shortDescription: "Raboo, K&D, and TheOne", images: [
-            "Photography/IndustrialPhotography.jpg",
-            "Photography/IndustrialPhotography1.jpg",
-            "Photography/IndustrialPhotography2.jpg",
-            "Photography/IndustrialPhotography3.jpg",
-            "Photography/IndustrialPhotography4.jpg",
-            "Photography/IndustrialPhotography5.jpg",
-            "Photography/IndustrialPhotography6.jpg",
-            "Photography/IndustrialPhotography7.jpg",
-            "Photography/IndustrialPhotography8.jpg",
-            "Photography/IndustrialPhotography9.jpg",
+            "photography/IndustrialPhotography.jpg",
+            "photography/IndustrialPhotography1.jpg",
+            "photography/IndustrialPhotography2.jpg",
+            "photography/IndustrialPhotography3.jpg",
+            "photography/IndustrialPhotography4.jpg",
+            "photography/IndustrialPhotography5.jpg",
+            "photography/IndustrialPhotography6.jpg",
+            "photography/IndustrialPhotography7.jpg",
+            "photography/IndustrialPhotography8.jpg",
+            "photography/IndustrialPhotography9.jpg",
             // ...existing code...
-        ], cardImage: "Photography/IndustrialPhotography.jpg" },
+        ], cardImage: "photography/IndustrialPhotography.jpg" },
     { title: "Watch ME!", category: "Design", href: "#", description: "Watch Me! is an Iranian short animated film directed by Reza Mehranfar. The animation follows the story of a young boy who lives in a world filled with anxiety and fear — feelings that are invisible and seemingly meaningless to others around him, leaving him in emotional darkness and isolation. Through its narrative, the film highlights the gap between children’s inner experiences and the adult world that often fails to understand or acknowledge them. Watch Me! was selected to be screened at the International Film Festival on Disability in France, where it stood out as the only work from Iran included in the festival’s program, which focuses on themes related to health and disability awareness.", shortDescription: "Poster, DVD, End Credits Design", images: ["design/WatchMe1.jpg", "design/WatchMe2.jpg", "design/WatchMe3.jpg"], cardImage: "design/WatchMe.jpg" },
     { title: "Pernigotti", category: "Menu design", href: "Mumbai'sGuidebook.html", description: "Menu design (Including photography)", shortDescription: "Menu design", images: ["design/Pernigotti1.jpg", "design/Pernigotti2.jpg", "design/Pernigotti3.jpg", "design/Pernigotti4.jpg", "design/Pernigotti5.jpg", "design/Pernigotti6.jpg", "design/Pernigotti7.jpg", "design/Pernigotti8.jpg"], cardImage: "design/Pernigotti.jpg", randomImage: false },
     { title: "Social media posts", category: "Design", href: "InteractiveCalender.html", description: "Over 82 posts have been designed for Rougine Darou, a pharmaceutical company, covering information about disease and more.", shortDescription: "Social media posts", images: [
@@ -77,7 +77,7 @@ const portfolioItems = [
     { title: "Flash memory", category: "Graphic Design", href: "IDC.html", description: "The flash memory was designed for the pharmaceutical company Rugine Darou, incorporating the company’s logo for branding purposes, with the entire printing and production process managed by the team.", shortDescription: "Logo branding", images: ["design/FlashMemory.jpg"] },
     { title: "lowimpact.design", category: "Design", href: "#", description: "LowImpact.design focuses on practical steps digital designers can take throughout the design process to make their work more energy-efficient and environmentally friendly.<br>Link to access: <a href=\"https://lowimpactdesign.me\" target=\"_blank\">lowimpactdesign.me</a>", shortDescription: "Sustainable design practices", images: ["design/LowImpactDesign.jpg"] },
     { title: "Collection of Crap", category: "Illustration", href: "BioData.html", description: "This collection is a personal painting project created using mixed painting techniques in a notebook format. Collage and acrylic are used intuitively, allowing the process to be guided by freedom and experimentation. Every page tells a story, presenting different perspectives and personal expressions.", shortDescription: "Freedom Experimented", images: ["illustration/CollectionofCrap1.jpg", "illustration/CollectionofCrap2.jpg", "illustration/CollectionofCrap3.jpg", "illustration/CollectionofCrap4.jpg", "illustration/CollectionofCrap5.jpg", "illustration/CollectionofCrap6.jpg", "illustration/CollectionofCrap7.jpg", "illustration/CollectionofCrap8.jpg", "illustration/CollectionofCrap9.jpg", "illustration/CollectionofCrap10.jpg", "illustration/CollectionofCrap11.jpg", "illustration/CollectionofCrap12.jpg", "illustration/CollectionofCrap13.jpg"] },
-        { title: "Barazandeh Paris", category: "Photography", href: "Barazandeh.Paris.html", description: "The photography for Barazandeh Paris, a French luxury brand, features over 80 product shots and 20+ modeling images of gloves and Swarovski-decorated hosiery, highlighting hand-stitched craftsmanship and the playful yet decadent elegance of the collection.", shortDescription: "Product and modeling photography", images: ["Photography/Barazandeh.jpg", "Photography/Barazandeh1.jpg", "Photography/Barazandeh2.jpg"] },
+        { title: "Barazandeh Paris", category: "Photography", href: "Barazandeh.Paris.html", description: "The photography for Barazandeh Paris, a French luxury brand, features over 80 product shots and 20+ modeling images of gloves and Swarovski-decorated hosiery, highlighting hand-stitched craftsmanship and the playful yet decadent elegance of the collection.", shortDescription: "Product and modeling photography", images: ["photography/Barazandeh.jpg", "photography/Barazandeh1.jpg", "photography/Barazandeh2.jpg"] },
 // Removed 'Sanitary Valves' portfolio item
     { title: "Bilt", category: "Design", href: "#", description: "Over 10 advertisements for BILT’s cellotape, including character design, photography, and visual concepts across both outdoor and indoor media.", shortDescription: "Over 10 advertisements", images: ["design/Bilt1.jpg", "design/Bilt2.jpg", "design/Bilt3.jpg", "design/Bilt4.jpg", "design/Bilt5.jpg", "design/Bilt6.jpg", "design/Bilt7.jpg", "design/Bilt8.jpg", "design/Bilt9.jpg", "design/Bilt10.jpg"] },
     { title: "Magazine", category: "Design", href: "#", description: "Over 15 magazines have been designed (both print and digital) for Pardis Gholhak Cinema, based in Tehran, Iran. The focus is on Western, American, French, Noir, and other film genres.", shortDescription: "Film magazines, print & digital", images: ["design/Magazine1.jpg", "design/Magazine2.jpg", "design/Magazine3.jpg", "design/Magazine4.jpg"], cardImage: "design/Magazine.jpg" },
