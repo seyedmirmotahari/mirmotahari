@@ -671,18 +671,61 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 }
 
 @media (max-width: 480px) {
+    .portfolio-header {
+        padding: 55px 0 0 !important;
+        margin: 0 !important;
+    }
+
+    .header-content {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
     .header-box {
         aspect-ratio: 16 / 6;
         min-height: 0;
         margin-top: 0px;
         margin-bottom: 0px;
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
     }
 
     .heart-overlay {
         width: min(28vw, 120px);
         height: auto;
+    }
+}
+
+@media (max-width: 327px) {
+    .portfolio-header {
+        padding: 55px 0 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .header-content {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .header-box {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .portfolio-section {
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .portfolio-container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
     }
 }
 
@@ -1079,6 +1122,17 @@ body.dark-mode .modal-nav {
     background-repeat: no-repeat;
     border-radius: 0;
     overflow: hidden;
+    position: relative;
+}
+
+.item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .item-title {
@@ -1621,7 +1675,7 @@ body.dark-mode .footer-info {
 }
 
 /* iPhone 7/8/SE sized screens: force centered and fully-fitted images */
-@media (max-width: 375px) {
+@media (max-width: 327px) {
     html,
     body {
         width: 100%;
@@ -1633,6 +1687,11 @@ body.dark-mode .footer-info {
         max-width: 100%;
     }
 
+    .portfolio-header {
+        padding: 55px 0 0 !important;
+        margin: 0 !important;
+    }
+
     .portfolio-header,
     .header-content,
     .header-box {
@@ -1641,16 +1700,22 @@ body.dark-mode .footer-info {
         min-width: 0 !important;
     }
 
+    /* Keep card margins on tiny screens while keeping header full-width */
+    .portfolio-section {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
     .header-box {
         aspect-ratio: 16 / 7 !important;
         min-height: 0 !important;
-        background-size: cover !important;
+        background-size: contain !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
 
     body.dark-mode .header-box {
-        background-size: cover !important;
+        background-size: contain !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
@@ -1664,7 +1729,7 @@ body.dark-mode .footer-info {
     }
 
     .item-image {
-        background-size: 115% auto !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
         background-color: #f4f4f4;
