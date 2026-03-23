@@ -1117,6 +1117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 var contactLink = document.querySelector('.nav-link[href="#contact"]');
 var footerLinks = document.querySelector('.footer-links');
 if (contactLink && footerLinks) {
+    var previousActiveFilter = null;
     // Create overlay
     var overlay = document.querySelector('.contact-overlay-dark');
     if (!overlay) {
@@ -1131,6 +1132,8 @@ if (contactLink && footerLinks) {
     popupLinks.style.display = 'none';
     document.body.appendChild(popupLinks);
     function showContactOverlay() {
+            var activeFilterLink = document.querySelector('.nav-link[data-filter].active');
+            previousActiveFilter = activeFilterLink ? activeFilterLink.dataset.filter : null;
       overlay.classList.remove('hide');
       overlay.style.display = 'block';
       // Clone footerLinks content for popup
@@ -1148,6 +1151,22 @@ if (contactLink && footerLinks) {
       overlay.removeEventListener('click', hideContactOverlay);
       document.removeEventListener('keydown', escHandler);
       document.body.style.overflow = '';
+
+            // Restore nav state: remove contact highlight and re-activate previous filter.
+            contactLink.classList.remove('active');
+            var filterLinks = document.querySelectorAll('.nav-link[data-filter]');
+            filterLinks.forEach(function(link) { link.classList.remove('active'); });
+
+            var restoreTarget = null;
+            if (previousActiveFilter) {
+                restoreTarget = document.querySelector('.nav-link[data-filter="' + previousActiveFilter + '"]');
+            }
+            if (!restoreTarget) {
+                restoreTarget = document.querySelector('.nav-link[data-filter="design"]') || filterLinks[0];
+            }
+            if (restoreTarget) {
+                restoreTarget.classList.add('active');
+            }
     }
     function escHandler(e) {
       if (e.key === 'Escape') hideContactOverlay();
