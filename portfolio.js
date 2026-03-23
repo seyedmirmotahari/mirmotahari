@@ -25,7 +25,7 @@ const portfolioItems = [
                     // ...existing code...
                     { title: "Gift of the Day", category: "Design", href: "#", description: "The app was designed in 2013 with the aim of creating an interactive calendar and reminder application, as well as a tool for managing meetings and appointments. It was developed for Iranian users, who at the time did not have access to an application supporting the Shamsi calendar for daily planning.", shortDescription: "Interactive Calendar", images: [
                         "design/InteractiveCalender.jpg"
-                    ], cardImage: "design/InteractiveCalender.jpg" }
+                    ], cardImage: "design/InteractiveCalender.jpg" },
                 { title: "Infographic", category: "Design", href: "#", description: "The infographic map was designed for the Industrial Design Centre (IDC), Indian Institute of Technology Bombay (IITB).", shortDescription: "IDC Map", images: ["design/IDC-Map1.jpg"], cardImage: "design/IDC-Map.jpg" },
             { title: "Calendar", category: "Design", href: "#", description: "The Calendar project included both a notebook calendar and a desk calendar. For the notebook calendar, our team designed the cover and the interior layout. We were also responsible for overseeing and managing the entire printing process. For the desk calendar, each month featured a photograph of employees whose birthdays fell within that month. Our team handled the photography, the design, the calendar layout, as well as the complete printing and production process.", shortDescription: "Desk and diary calendar", images: [
                 "design/DeskCalendar&Diary.jpg",
