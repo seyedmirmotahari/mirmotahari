@@ -105,6 +105,24 @@ const STAR_COLORS = [
     "#00bfff"
 ];
 
+function safeStorageGet(key) {
+    try {
+        return window.localStorage ? localStorage.getItem(key) : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function safeStorageSet(key, value) {
+    try {
+        if (window.localStorage) {
+            localStorage.setItem(key, value);
+        }
+    } catch (e) {
+        // Ignore storage errors so core UI still renders
+    }
+}
+
 function createStarLayer({
     container,
     count,
@@ -236,10 +254,10 @@ function initThemeToggle() {
         document.body.classList.toggle("dark-mode", isDark);
         toggleButton.setAttribute("aria-pressed", String(isDark));
         toggleButton.textContent = isDark ? "Day mode" : "Night mode";
-        localStorage.setItem("theme", isDark ? "dark" : "light");
+        safeStorageSet("theme", isDark ? "dark" : "light");
     };
 
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = safeStorageGet("theme");
     setMode(savedTheme === "dark");
 
     toggleButton.addEventListener("click", () => {
@@ -283,7 +301,7 @@ function initMusicToggle() {
     const setMusic = (on) => {
         btn.setAttribute("aria-pressed", String(on));
         btn.textContent = "Music";
-        localStorage.setItem("music", on ? "on" : "off");
+        safeStorageSet("music", on ? "on" : "off");
         if (on) {
             audio.muted = false;
             audio.play().then(() => {
@@ -302,7 +320,7 @@ function initMusicToggle() {
     };
 
 
-    const saved = localStorage.getItem("music");
+    const saved = safeStorageGet("music");
     if (saved === "on") {
         // Try to play immediately; if blocked, try muted autoplay, then wait for user interaction to unmute/play
         audio.play().then(() => {
@@ -936,10 +954,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.hash) {
         history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
-    initStarFields();
-    initThemeToggle();
-    initMusicToggle();
-    initPortfolio();
+    try { initStarFields(); } catch (e) { console.warn("initStarFields failed", e); }
+    try { initThemeToggle(); } catch (e) { console.warn("initThemeToggle failed", e); }
+    try { initMusicToggle(); } catch (e) { console.warn("initMusicToggle failed", e); }
+    try { initPortfolio(); } catch (e) { console.error("initPortfolio failed", e); }
 
 });
 
