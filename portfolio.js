@@ -185,8 +185,8 @@ function createStarLayer({
         layer.style.position = 'fixed';
         layer.style.left = '0';
         layer.style.top = '0';
-        layer.style.width = '100vw';
-        layer.style.height = '100vh';
+        layer.style.width = '100%';
+        layer.style.height = '100%';
         // ensure stars sit above the header box but below UI (nav)
         layer.style.zIndex = '2';
         document.body.appendChild(layer);
