@@ -1591,6 +1591,8 @@ body.dark-mode .footer-info {
     .item-image {
         background-size: cover;
         background-position: center center;
+        border: 1.5px solid var(--button-border);
+        box-sizing: border-box;
     }
 
     .item-link {
