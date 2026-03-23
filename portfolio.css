@@ -672,8 +672,8 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 
 @media (max-width: 480px) {
     .header-box {
-        aspect-ratio: 16 / 4;
-        min-height: 120px;
+        aspect-ratio: 16 / 6;
+        min-height: 0;
         margin-top: 0px;
         margin-bottom: 0px;
         background-size: contain;
@@ -1579,12 +1579,12 @@ body.dark-mode .footer-info {
     }
 
     .header-box {
-        background-size: 100% auto;
-        background-position: center top;
+        background-size: contain;
+        background-position: center center;
     }
 
     .item-image {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
     }
 
