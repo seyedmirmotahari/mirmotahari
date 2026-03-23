@@ -648,7 +648,7 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
     aspect-ratio: 16 / 6; /* flexible height based on width */
     min-height: 180px;
     border: 0;
-    background: #f9f9f9 url("Main/main.jpg") center/cover no-repeat;
+    background: #f9f9f9 url("main/main.jpg") center/cover no-repeat;
     overflow: hidden;
 }
 
@@ -681,7 +681,7 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 
 
 body.dark-mode .header-box {
-    background: #1c212b url("Main/main2.jpg") center/cover no-repeat;
+    background: #1c212b url("main/main2.jpg") center/cover no-repeat;
 }
 
 /* Ensure header content sits above the global star layers */

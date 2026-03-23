@@ -24,8 +24,8 @@ const portfolioItems = [
                             ], cardImage: "design/Rabo.jpg" },
                     // ...existing code...
                     { title: "Gift of the Day", category: "Design", href: "#", description: "The app was designed in 2013 with the aim of creating an interactive calendar and reminder application, as well as a tool for managing meetings and appointments. It was developed for Iranian users, who at the time did not have access to an application supporting the Shamsi calendar for daily planning.", shortDescription: "Interactive Calendar", images: [
-                        "Design/InteractiveCalender.jpg"
-                    ], cardImage: "Design/InteractiveCalender.jpg" },
+                        "design/InteractiveCalender.jpg"
+                    ], cardImage: "design/InteractiveCalender.jpg" }
                 { title: "Infographic", category: "Design", href: "#", description: "The infographic map was designed for the Industrial Design Centre (IDC), Indian Institute of Technology Bombay (IITB).", shortDescription: "IDC Map", images: ["design/IDC-Map1.jpg"], cardImage: "design/IDC-Map.jpg" },
             { title: "Calendar", category: "Design", href: "#", description: "The Calendar project included both a notebook calendar and a desk calendar. For the notebook calendar, our team designed the cover and the interior layout. We were also responsible for overseeing and managing the entire printing process. For the desk calendar, each month featured a photograph of employees whose birthdays fell within that month. Our team handled the photography, the design, the calendar layout, as well as the complete printing and production process.", shortDescription: "Desk and diary calendar", images: [
                 "design/DeskCalendar&Diary.jpg",
@@ -257,7 +257,7 @@ function initMusicToggle() {
         audio = document.createElement("audio");
         audio.id = "site-music";
         audio.loop = true;
-        audio.src = "Main/music.mp3";
+        audio.src = "main/music.mp3";
         audio.setAttribute("aria-hidden", "true");
         document.body.appendChild(audio);
     }
@@ -810,8 +810,8 @@ function initPortfolio() {
                 siteMusic.muted = true;
             }
 
-            mohsenVoiceAudio = new Audio("Main/1.wav");
-            mohsenMusicAudio = new Audio("Main/2.wav");
+            mohsenVoiceAudio = new Audio("main/1.wav");
+            mohsenMusicAudio = new Audio("main/2.wav");
             mohsenVoiceAudio.preload = "auto";
             mohsenMusicAudio.preload = "auto";
 
@@ -850,7 +850,7 @@ function initPortfolio() {
         if (profileTrigger) {
             profileTrigger.addEventListener("click", (event) => {
                 event.preventDefault();
-                activeImages = ["Photo/mohsen.mp4"];
+                activeImages = ["photo/mohsen.mp4"];
                 activeIndex = 0;
                 modalTitle.textContent = "Mohsen Mirmotahari";
                 modalCategory.innerHTML = "<p>Mohsen was educated in Iran, India, Malaysia, and Portugal. He is currently a PhD student in Communication Design at the Faculty of Fine Arts, University of Lisbon. His research investigates sustainable digital design practices and promotes them among digital designers. His academic background includes a master’s degree in design (Visual Communication) from the Indian Institute of Technology Bombay (IIT Bombay), a bachelor’s degree in fine arts (Visual Communication Design) from the University of Pune, India, and research experience at the University of Malaya, Malaysia. </p><p style=\"text-indent: 20px; margin-top: 10px;\">With over two decades of professional experience, Mohsen has worked as a designer across print and digital publications and has participated in more than fifteen exhibitions worldwide. He founded <i>Mirmotahari Design Studio</i> in Iran and collaborates with companies in France, Germany, and Portugal. He is also the founder of <a href=\"#\" class=\"open-lowimpact\"><i>lowimpact.design</i></a>, a project that both follows and presents sustainable digital design practices.</p>";
@@ -878,7 +878,7 @@ function initPortfolio() {
                     if (modalImageWrap) modalImageWrap.style.display = 'none';
                     if (modalImage) { modalImage.innerHTML = ''; modalImage.style.backgroundImage = 'none'; }
                     if (modalCategory) {
-                        modalCategory.innerHTML = '<img src="Main/dino2.png" alt="Dino" class="dino-modal-img">' +
+                        modalCategory.innerHTML = '<img src="main/Dino2.png" alt="Dino" class="dino-modal-img">' +
                             '<div class="dino-popup-text">Every second we use digital design, we consume energy and increase our carbon footprint. If we don\'t act responsibly, we risk resource shortages and rising pollution. It\'s time to embrace sustainable digital design.</div>';
                     }
                 } catch(e) {}
