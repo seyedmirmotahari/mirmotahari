@@ -878,7 +878,7 @@ function initPortfolio() {
                     if (modalImageWrap) modalImageWrap.style.display = 'none';
                     if (modalImage) { modalImage.innerHTML = ''; modalImage.style.backgroundImage = 'none'; }
                     if (modalCategory) {
-                        modalCategory.innerHTML = '<img src="Main/Dino2.png" alt="Dino" class="dino-modal-img">' +
+                        modalCategory.innerHTML = '<img src="Main/dino2.png" alt="Dino" class="dino-modal-img">' +
                             '<div class="dino-popup-text">Every second we use digital design, we consume energy and increase our carbon footprint. If we don\'t act responsibly, we risk resource shortages and rising pollution. It\'s time to embrace sustainable digital design.</div>';
                     }
                 } catch(e) {}
