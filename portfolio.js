@@ -275,10 +275,24 @@ function initMusicToggle() {
         audio = document.createElement("audio");
         audio.id = "site-music";
         audio.loop = true;
+        audio.preload = "auto";
+        audio.setAttribute("playsinline", "");
         audio.src = "main/music.mp3";
         audio.setAttribute("aria-hidden", "true");
         document.body.appendChild(audio);
     }
+
+    const gestureEvents = ["pointerdown", "touchstart", "click", "keydown"];
+    const addGestureListeners = (handler) => {
+        gestureEvents.forEach((evt) => {
+            window.addEventListener(evt, handler, { once: true });
+        });
+    };
+    const removeGestureListeners = (handler) => {
+        gestureEvents.forEach((evt) => {
+            window.removeEventListener(evt, handler);
+        });
+    };
 
     const fadeInAudio = (targetVolume = 1, duration = 1400) => {
         try {
@@ -332,22 +346,18 @@ function initMusicToggle() {
                 // Unmute on first user interaction
                 const unmute = () => {
                     audio.muted = false;
-                    window.removeEventListener("click", unmute);
-                    window.removeEventListener("keydown", unmute);
+                    removeGestureListeners(unmute);
                 };
-                window.addEventListener("click", unmute, { once: true });
-                window.addEventListener("keydown", unmute, { once: true });
+                addGestureListeners(unmute);
             }).catch(() => {
                 // As a final fallback, wait for user interaction to start playback
                 const tryPlay = () => {
                     audio.play().then(() => {
                         setMusic(true);
-                        window.removeEventListener("click", tryPlay);
-                        window.removeEventListener("keydown", tryPlay);
+                        removeGestureListeners(tryPlay);
                     }).catch(() => {});
                 };
-                window.addEventListener("click", tryPlay, { once: true });
-                window.addEventListener("keydown", tryPlay, { once: true });
+                addGestureListeners(tryPlay);
             });
         });
     } else if (saved === "off") {
@@ -361,12 +371,10 @@ function initMusicToggle() {
             const tryPlay = () => {
                 audio.play().then(() => {
                     setMusic(true);
-                    window.removeEventListener("click", tryPlay);
-                    window.removeEventListener("keydown", tryPlay);
+                    removeGestureListeners(tryPlay);
                 }).catch(() => {});
             };
-            window.addEventListener("click", tryPlay, { once: true });
-            window.addEventListener("keydown", tryPlay, { once: true });
+            addGestureListeners(tryPlay);
         });
     }
 

@@ -358,16 +358,25 @@
         (function(){
             var audio = document.getElementById('site-music');
             if (!audio) return;
+            var gestureEvents = ['pointerdown', 'touchstart', 'click', 'keydown'];
+            var addGestureListeners = function(handler) {
+                gestureEvents.forEach(function(evt) {
+                    window.addEventListener(evt, handler, { once: true });
+                });
+            };
+            var removeGestureListeners = function(handler) {
+                gestureEvents.forEach(function(evt) {
+                    window.removeEventListener(evt, handler);
+                });
+            };
             function tryPlay() {
                 audio.play().catch(function(){
                     // browsers may block autoplay; start on first user gesture
                     var startOnGesture = function(){
                         audio.play().catch(function(){});
-                        window.removeEventListener('click', startOnGesture);
-                        window.removeEventListener('keydown', startOnGesture);
+                        removeGestureListeners(startOnGesture);
                     };
-                    window.addEventListener('click', startOnGesture, {once:true});
-                    window.addEventListener('keydown', startOnGesture, {once:true});
+                    addGestureListeners(startOnGesture);
                 });
             }
             if (document.readyState === 'complete' || document.readyState === 'interactive') {
