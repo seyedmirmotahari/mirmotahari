@@ -1616,6 +1616,11 @@ body.dark-mode .footer-info {
     .site-footer section {
         margin-top: 16px;
     }
+
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+    }
 }
 
 /* iPhone 7/8/SE sized screens: force centered and fully-fitted images */
@@ -1668,5 +1673,10 @@ body.dark-mode .footer-info {
         background-color: #f4f4f4;
         aspect-ratio: 3 / 2;
         padding-bottom: 0;
+    }
+
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
     }
 }
