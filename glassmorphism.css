@@ -1,0 +1,122 @@
+/* Glassmorphism container for macOS Quick Look style */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  box-shadow: 0 8px 40px 0 rgba(31,38,135,0.18), 0 1.5px 8px 0 rgba(31,38,135,0.08);
+  backdrop-filter: blur(50px) saturate(180%);
+  -webkit-backdrop-filter: blur(50px) saturate(180%);
+}
+
+/* Example grid and modal usage */
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 28px;
+  padding: 40px;
+  max-width: 1100px;
+  margin: 60px auto 0 auto;
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.6);
+  border-radius: 0;
+  border: 2px solid #e5e5e5;
+  box-shadow: none;
+  backdrop-filter: blur(50px) saturate(180%);
+  -webkit-backdrop-filter: blur(50px) saturate(180%);
+  padding: 12px 12px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s, transform 0.15s;
+  outline: none;
+}
+.glass-card:focus, .glass-card:hover {
+  /* No border change on hover/focus for stability */
+}
+.glass-card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+.glass-card-name {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  word-break: break-all;
+}
+
+.glass-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(30,34,50,0.18);
+  align-items: center;
+  justify-content: center;
+}
+.glass-modal.open {
+  display: flex;
+}
+.glass-modal-content {
+  composes: glassmorphism;
+  background: rgba(255,255,255,0.7);
+  border-radius: 28px;
+  box-shadow: 0 24px 80px 0 rgba(31,38,135,0.22);
+  backdrop-filter: blur(80px) saturate(180%);
+  -webkit-backdrop-filter: blur(80px) saturate(180%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 420px;
+  max-width: 90vw;
+  min-height: 220px;
+  padding: 44px 48px 44px 44px;
+  position: relative;
+  outline: none;
+}
+.glass-modal-icon {
+  font-size: 6.5rem;
+  margin-right: 48px;
+  color: #6b7aff;
+  flex-shrink: 0;
+}
+.glass-modal-meta h2 {
+  font-size: 2.1rem;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.glass-modal-meta p {
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
+  color: #333;
+}
+.glass-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.glass-modal-close:hover {
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  .glass-modal-content {
+    flex-direction: column;
+    min-width: 0;
+    padding: 28px 12px 28px 12px;
+  }
+  .glass-modal-icon {
+    margin: 0 0 24px 0;
+    font-size: 4.2rem;
+  }
+}

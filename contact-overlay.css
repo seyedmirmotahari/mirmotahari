@@ -1,0 +1,61 @@
+body.dark-mode .contact-overlay-dark {
+  background: rgba(0,0,0,0.7);
+}
+/* Overlay for contact focus effect */
+.contact-overlay-dark {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  pointer-events: auto;
+  transition: opacity 0.4s;
+}
+.contact-overlay-dark.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.footer-links.contact-highlight {
+  position: fixed !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0;
+  min-height: 0;
+  max-width: none;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 700px) {
+  .footer-links.contact-highlight {
+    flex-direction: column;
+    max-width: 95vw;
+    gap: 1em;
+    padding: 1.2em 0.5em;
+  }
+}
+.footer-links.contact-highlight .footer-link {
+  color: #fff !important;
+  background: none !important;
+  font-weight: normal;
+  font-size: 1.3em;
+  display: block;
+  margin: 0.5em 0;
+  z-index: 10002;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links.contact-highlight .footer-link:hover,
+.footer-links.contact-highlight .footer-link:focus {
+  color: var(--accent-color) !important;
+  outline: none;
+}

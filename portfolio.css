@@ -1,0 +1,1532 @@
+html, body, * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    -moz-user-select: none !important;
+}
+/* Make the footer dino clickable even if its wrapper disables pointer events */
+#dino-footer-wrapper img {
+    pointer-events: auto;
+    cursor: pointer;
+}
+/* Add extra space between first and second footer columns for visual balance */
+.site-footer .container > section:first-child {
+    margin-right: 48px;
+}
+/* Black arrows for Raboo popup */
+[data-popup="raboo"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for K&D popup */
+[data-popup="k&d"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for Barazandeh popup */
+[data-popup="barazandeh-paris"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for Magazine popup */
+[data-popup="magazine"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode [data-popup="magazine"] .modal-nav {
+    color: #000 !important;
+}
+/* Ensure all custom popup arrow colors are preserved in night mode */
+body.dark-mode [data-popup="watch-me!"] .modal-nav {
+    color: #fff !important;
+}
+body.dark-mode [data-popup="bilt"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode [data-popup="collection-of-crap"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode [data-popup="logo"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode [data-popup="the-black-monsters"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode [data-popup="diterin"] .modal-nav {
+    color: #000 !important;
+}
+/* Ensure popup arrow color stays black in night mode for these popups */
+body.dark-mode [data-popup="bilt"] .modal-nav,
+body.dark-mode [data-popup="collection-of-crap"] .modal-nav,
+body.dark-mode [data-popup="logo"] .modal-nav,
+body.dark-mode [data-popup="the-black-monsters"] .modal-nav,
+body.dark-mode [data-popup="diterin"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for Diterin popup */
+[data-popup="diterin"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for The Black Monsters popup */
+[data-popup="the-black-monsters"] .modal-nav {
+    color: #000 !important;
+}
+/* Black arrows for Logo popup */
+[data-popup="logo"] .modal-nav {
+    color: #000 !important;
+}
+/* Red arrows for Collection of Crap popup */
+[data-popup="collection-of-crap"] .modal-nav {
+    color: #000 !important;
+}
+body.dark-mode .modal-image-wrap--social .modal-nav {
+    color: #fff !important;
+}
+/* Move navigation arrows outside the video box for social media post popup */
+.modal-image-wrap--social {
+    position: relative;
+}
+.modal-image-wrap--social .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    cursor: pointer;
+}
+.modal-image-wrap--social .modal-prev {
+    left: -56px;
+}
+.modal-image-wrap--social .modal-next {
+    right: -56px;
+}
+/* Only one .modal-image-wrap--social rule, perfectly square and centered */
+.modal-image-wrap--social {
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+/* Ensure video fills the square box */
+.modal-image-wrap--social video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.footer-weight-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-day);
+    line-height: 1.6;
+}
+body.dark-mode .footer-weight-label {
+    color: #e5e5e5;
+}
+/* Solar-powered info line styling to match footer */
+ .footer-info {
+     text-align: left;
+    margin: 8px 0 0 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-day);
+    flex: 1;
+    min-width: 0;
+    line-height: 1.6;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial, sans-serif;
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --accent-color: #3245ff;
+    --button-border: #e5e5e5;
+    --white-darker: #e5e5e5; /* 10% darker than white for dark-mode white text */
+    --text-day: #272727; /* day-mode black color */
+}
+
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-day);
+    background: #fff;
+}
+
+
+/* Portfolio modal fade in/out */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 520ms cubic-bezier(0.22, 0, 0, 1);
+    z-index: 10000;
+}
+
+.modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal.is-closing {
+    opacity: 0;
+    pointer-events: none;
+    /* Keep visibility visible while fading out so the fade is visible */
+    visibility: visible;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 520ms cubic-bezier(0.22, 0, 0, 1);
+}
+
+.modal.is-open .modal-backdrop {
+    opacity: 1;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+body.dark-mode {
+    background: #0f1115;
+    color: #e6e6e6;
+    --button-border: #2a2d35; /* ensure separators use the mode-button border color in dark mode */
+}
+
+.star-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star-layer--header {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.star-layer--light,
+.star-layer--dark {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+body.dark-mode .star-layer--light,
+body:not(.dark-mode) .star-layer--dark {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    will-change: opacity, transform;
+}
+
+.star--blink {
+    animation-name: twinkle-random;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes twinkle-random {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.9);
+    }
+    35% {
+        opacity: 0.95;
+        transform: scale(1.1);
+    }
+    70% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes heart-blink {
+    0% {
+        opacity: 1.0;
+    }
+    10% {
+        opacity: 1.0;
+    }
+    30% {
+        opacity: 0.1;
+    }
+    70% {
+        opacity: 0.1;
+    }
+    90% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .star--blink {
+        animation: none;
+    }
+    .heart-overlay {
+        animation: none;
+    }
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    z-index: 1000;
+    padding: 0 30px;
+}
+
+.nav-wrapper {
+    border: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+.nav-menu,
+.nav-logo,
+.nav-link {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+.nav-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+/* On desktop (no hamburger), keep the links first and the mode/music controls at the end, matching Test 2 2 layout */
+.nav-menu {
+    order: 1;
+    margin-right: 20px; /* keep the divider close to the mode switch */
+}
+
+.nav-actions {
+    order: 2;
+    gap: 20px; /* added 5px to match requested spacing */
+}
+
+.nav-logo {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-day);
+    text-decoration: none;
+    margin-right: auto; /* push links + controls to the right */
+}
+
+.nav-portfolio {
+    font-size: 14px;
+    color: var(--text-day); /* day mode: slightly brighter than black */
+    margin-left: 0;
+}
+
+.nav-logo:hover {
+    color: var(--accent-color);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* added 5px to match requested spacing */
+    flex-wrap: nowrap;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nav-divider {
+    width: 1.5px;
+    height: 14px;
+    background: var(--button-border); /* match .mode-toggle border in light mode */
+    display: inline-block;
+}
+
+.nav-separator {
+    font-size: 15px;
+    color: var(--button-border); /* day mode: match vertical divider color */
+}
+
+.nav-link {
+    font-size: 15px;
+    color: var(--text-day); /* day mode: slightly brighter than black */
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.nav-link.active {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.nav-link.active:hover {
+    color: var(--text-day);
+}
+
+.mode-toggle {
+    border: 1.5px solid var(--button-border);
+    background: #f9f9f9; /* match .load-more-btn */
+    color: var(--text-day); /* day mode: slightly brighter text */
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: border 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.mode-toggle:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+/* Mobile hamburger menu (similar to Apple navigation on smaller screens) */
+.mobile-menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: var(--text-day);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle .hamburger {
+    display: block;
+    width: 22px;
+    height: 1.5px; /* match mode button border thickness */
+    background: currentColor;
+    border-radius: 1px;
+    position: relative;
+    transition: background 200ms ease;
+}
+
+.mobile-menu-toggle .hamburger::before,
+.mobile-menu-toggle .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px; /* match mode button border thickness */
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform 200ms ease;
+}
+
+.mobile-menu-toggle .hamburger::before {
+    top: -7px;
+}
+
+.mobile-menu-toggle .hamburger::after {
+    top: 7px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile layout (phones) ---------- */
+/* Below 800px width, show the hamburger menu */
+@media (max-width: 800px) {
+    .main-nav {
+        /* Align hamburger with the content boxes below */
+        padding: 0 30px;
+    }
+
+    .nav-wrapper {
+        /* Keep top nav controls in one row on mobile */
+        padding: 16px 0;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
+    .nav-logo {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .nav-actions {
+        /* sequence after name: switch, music, hamburger */
+        flex-wrap: nowrap;
+        width: auto;
+        gap: 15px; /* increased spacing between music and hamburger */
+    }
+
+    .nav-controls {
+        /* keep the mode switch + music grouped */
+        flex-shrink: 0;
+        order: 0;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-flex;
+        margin-left: auto; /* push hamburger to the right edge */
+        margin-right: 0;
+        order: 1;
+        padding: 10px 0; /* remove horizontal padding so the icon aligns flush */
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 14px 30px 16px;
+        border-top: 1px solid var(--button-border);
+        background: var(--nav-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 999;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu .nav-divider {
+        display: none;
+    }
+}
+
+/* Music toggle: OFF looks like the More button; ON shows blue text + blue border */
+#music-toggle[aria-pressed="true"] {
+    background: #f9f9f9; /* match .load-more-btn */
+    color: var(--accent-color); /* blue text when ON */
+    border-color: var(--accent-color); /* blue border when ON */
+}
+
+body.dark-mode #music-toggle[aria-pressed="true"] {
+    background: #161a22; /* match .load-more-btn in dark mode */
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* When music is ON, hovering the button should turn it blue */
+#music-toggle[aria-pressed="true"]:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+}
+
+body.dark-mode #music-toggle[aria-pressed="true"]:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white-darker);
+}
+
+/* Day mode (OFF): green background for music button */
+body:not(.dark-mode) #music-toggle[aria-pressed="false"] {
+    background: #ffffff;
+    color: #000000;
+    border-color: var(--button-border);
+}
+
+/* Day mode (OFF) hover: match the ON hover (blue background + white text) */
+body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+}
+
+/* Header */
+.portfolio-header {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 55px 30px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6; /* flexible height based on width */
+    min-height: 180px;
+    border: 0;
+    background: #f9f9f9 url("Main/main.jpg") center/cover no-repeat;
+    overflow: hidden;
+}
+
+/* More vertical spacing on larger screens */
+@media (min-width: 760px) {
+    .header-box {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Ensure the header stays readable at smaller sizes */
+@media (max-width: 768px) {
+    .header-box {
+        aspect-ratio: 16 / 5;
+        min-height: 160px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-box {
+        aspect-ratio: 16 / 4;
+        min-height: 120px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+
+body.dark-mode .header-box {
+    background: #1c212b url("Main/main2.jpg") center/cover no-repeat;
+}
+
+/* Ensure header content sits above the global star layers */
+.header-box {
+    position: relative;
+    z-index: 0;
+}
+
+.heart-overlay {
+    position: absolute;
+    top: 52%;
+    left: 50.5%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    pointer-events: none;
+    animation: heart-blink 1.5s ease-in-out infinite;
+}
+
+
+.header-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-day);
+    margin-bottom: 8px;
+}
+
+.main-title {
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--text-day);
+    margin-bottom: 0;
+    letter-spacing: -0.5px;
+}
+
+.bio-text {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 900px;
+    margin-bottom: 18px;
+}
+
+.intro-text {
+    font-size: 22px;
+    color: var(--text-day);
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.intro-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px 0;
+    position: relative;
+    z-index: 5;
+}
+
+.section-divider {
+    display: none;
+    margin: 0;
+}
+
+.portfolio-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 20px;
+}
+
+.load-more-wrap {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.load-more-btn {
+    border: 1.5px solid #e5e5e5;
+    background: rgb(255, 255, 255); /* 50% transparent in day mode */
+    color: var(--text-day);
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: border 0.3s ease, color 0.3s ease, background 0.3s ease;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.load-more-btn:hover {
+    border: 1.5px solid var(--accent-color);
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 520ms cubic-bezier(0.22, 0, 0, 1);
+    z-index: 2000;
+}
+
+.modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal.is-closing {
+    opacity: 0;
+    visibility: visible; /* keep visible while fading */
+    pointer-events: none;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 520ms cubic-bezier(0.22, 0, 0, 1);
+}
+
+.modal.is-open .modal-backdrop {
+    opacity: 1;
+}
+
+body.dark-mode .modal-backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    width: min(77vw, 660px);
+    max-width: 660px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    border-radius: 0;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    box-shadow: none;
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    padding: 12px 12px 16px 12px;
+    min-height: 500px;
+    max-height: 600px;
+    overflow-y: auto;
+
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+    transition: opacity 520ms cubic-bezier(0.22, 0, 0, 1), transform 520ms cubic-bezier(0.22, 0, 0, 1);
+}
+
+.modal.is-open .modal-content {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.modal.is-closing .modal-content {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+}
+
+/* Dark mode: slightly stronger shadow to be visible on dark backgrounds */
+body.dark-mode .modal-content {
+    box-shadow: none;
+}
+
+/* When the modal is used for short, text-only messages (dino popup), allow it to shrink */
+.modal.text-only-popup .modal-content {
+    min-height: auto;
+    max-height: 80vh;
+    padding: 12px 20px;
+    /* reduce width by 40px compared to regular modal */
+    width: calc(min(77vw, 600px) - 40px);
+    max-width: calc(660px - 40px);
+}
+
+@media (max-width: 480px) {
+    .modal .modal-content {
+        /* Allow the modal to shrink to fit short content on small screens */
+        min-height: auto;
+        max-height: 80vh;
+    }
+
+    /* Watch ME! has a long description; cap its height on small screens so the user can scroll within it */
+    .modal.watch-me-popup .modal-content {
+        min-height: auto;
+        max-height: 50vh;
+    }
+
+    .modal.text-only-popup .modal-content {
+        width: calc(100% - 40px);
+        max-width: calc(100% - 40px);
+    }
+}
+
+.modal-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+.modal-image-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.67%;
+    background-color: #f9f9f9;
+    margin-bottom: 0;
+}
+
+
+/* ...existing code... */
+/* ...existing code... */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid transparent;
+    background: transparent;
+    color: #fff !important;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: color 0.2s, box-shadow 0.2s, border 0.2s, transform 0.15s;
+}
+
+
+/* Example: Unique arrow color for each popup by data-popup attribute */
+[data-popup="watch-me!"] .modal-nav {
+    color: #fff !important; /* white for Watch ME! */
+}
+[data-popup="bilt"] .modal-nav {
+    color: #000 !important; /* black for Bilt */
+}
+[data-popup="social-media-posts"] .modal-nav {
+    color: #000 !important; /* black for Social media posts */
+}
+
+
+
+body.dark-mode .modal-nav {
+    border: none;
+    /* color intentionally not set here to allow specific popup color rules to apply */
+}
+
+
+
+.modal-prev {
+    left: 10px;
+}
+
+.modal-next {
+    right: 10px;
+}
+
+.modal-nav.is-hidden {
+    display: none;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-day);
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding: 16px 24px 0 24px;
+}
+
+/* Dino image shown above text inside modal */
+
+.modal .dino-modal-img {
+    display: block;
+    margin: -10px auto 10px auto;
+    width: auto;
+    max-height: 86px; /* 10% smaller than 96px */
+    object-fit: contain;
+    transform-origin: center;
+}
+
+@media (max-width: 480px) {
+    .modal .dino-modal-img { max-height: 58px; }
+}
+
+.dino-popup-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: inherit;
+           padding: 0 0px; /* horizontal gap halved */
+        box-sizing: border-box;
+        margin-left: -15px;
+        margin-right: -15px;
+    text-align: left;
+}
+
+.modal-category {
+    font-size: 14px;
+    color: #222;
+    padding: 0 24px 10px 24px;
+}
+
+.modal-category a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.modal-category a:hover {
+    color: var(--accent-color);
+}
+
+/* Portfolio Item */
+.portfolio-item {
+    position: relative;
+}
+
+.item-link {
+    display: block;
+    text-decoration: none;
+    background: rgba(255,255,255,0.6);
+    border-radius: 0;
+    border: 1.5px solid #e5e5e5;
+    box-shadow: none;
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    overflow: hidden;
+    transition: border 0.3s ease, box-shadow 0.2s, transform 0.15s;
+    padding: 12px 12px 16px 12px;
+    position: relative;
+    z-index: 5;
+}
+
+.item-link:hover {
+    border-color: var(--accent-color);
+}
+
+.item-image {
+    width: 100%;
+    padding-bottom: 66.67%;
+    background-color: #f9f9f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.item-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-day);
+    margin-bottom: 2px;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    padding: 16px 10px 0 10px;
+}
+
+.item-link:hover .item-title {
+    color: var(--text-day);
+}
+
+.item-category {
+    font-size: 16px;
+    color: #222;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0 10px 5px 10px;
+    display: block;
+    color: #999;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.item-link .item-category,
+.item-link:visited .item-category,
+.item-link:active .item-category {
+    color: #222;
+    font-size: 14px;
+}
+
+/* Footer */
+.site-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    border-top: 0;
+    background: transparent;
+    position: relative;
+    z-index: 5;
+}
+
+ .site-footer .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto 18px;
+    padding-top: 0;
+    border-top: 1.5px solid #e5e5e5;
+}
+
+ .site-footer section {
+     flex: 1;
+     min-width: 0;
+     text-align: left;
+    margin: 20px 0 0 0;
+     box-sizing: border-box;
+     line-height: 1.6;
+     display: flex;
+     flex-direction: column;
+     gap: 0;
+}
+
+.site-footer h3 {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-day);
+    line-height: 1.6;
+}
+
+ .site-footer dl {
+     display: flex;
+     flex-direction: column;
+     gap: 0;
+     margin: -2px 0 0 0;
+    line-height: 1.6;
+}
+
+ .site-footer dl > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-self: flex-start;
+    margin: 0;
+}
+
+.site-footer dd {
+    margin: 0;
+    color: var(--text-day);
+    font-size: 12px;
+    line-height: 1.6;
+    order: 1;
+}
+
+.site-footer dt {
+    margin: 0;
+    color: var(--text-day);
+    font-size: 12px;
+    line-height: 1.6;
+    order: 0;
+}
+
+.forecast dd {
+    white-space: nowrap;
+}
+
+.forecast dt {
+    white-space: nowrap;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1.5px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+    margin-left: auto;
+    text-align: left;
+}
+@media (max-width: 960px) {
+    .site-footer .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .site-footer section {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-left: 0;
+    }
+
+    /* Hide the footer dino on smaller screens */
+    #dino-footer-wrapper {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-left: 0;
+    }
+}
+
+.footer-link {
+    font-size: 12px;
+    color: var(--text-day); /* day mode: slightly brighter text */
+    text-decoration: none;
+    position: relative;
+    padding: 0;
+}
+
+.footer-link:hover {
+    color: var(--accent-color);
+}
+
+
+.copyright {
+    font-size: 12px;
+    color: var(--text-day); /* day mode: slightly brighter text */
+    margin: 0;
+    padding-top: 0;
+}
+
+.back-to-top {
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    color: var(--text-day);
+}
+
+body.dark-mode .main-nav {
+    background: #12141a;
+}
+
+body.dark-mode .nav-logo,
+body.dark-mode .nav-link,
+body.dark-mode .nav-portfolio,
+body.dark-mode .nav-separator {
+    color: var(--button-border); /* use day-mode button border color in dark mode */
+}
+
+/* Navigation labels slightly off-white in dark mode */
+body.dark-mode .nav-logo,
+body.dark-mode .nav-portfolio,
+body.dark-mode .nav-link {
+    color: var(--white-darker);
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-logo:hover {
+    color: var(--accent-color);
+}
+
+/* Make the hamburger lines match the nav logo color in dark mode */
+body.dark-mode .mobile-menu-toggle {
+    color: var(--white-darker);
+}
+
+body.dark-mode .nav-divider {
+    background: var(--button-border); /* use day-mode button border color in dark mode */
+}
+
+body.dark-mode .mode-toggle {
+    background: #161a22; /* match .load-more-btn in dark mode */
+    color: var(--white-darker); /* slightly darker than pure white */
+    border: 1.5px solid #2a2d35;
+}
+
+body.dark-mode .mode-toggle:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: var(--white-darker);
+}
+
+body.dark-mode .header-name,
+body.dark-mode .main-title,
+body.dark-mode .intro-text {
+    color: #f0f0f0;
+}
+
+body.dark-mode .bio-text,
+body.dark-mode .intro-description,
+body.dark-mode .back-to-top {
+    color: #b3b3b8;
+}
+
+body.dark-mode .section-divider {
+    background: #2a2d35;
+}
+
+body.dark-mode .load-more-btn {
+    background: #161a22;
+    color: #e6e6e6;
+    border-color: #2a2d35;
+}
+
+body.dark-mode .load-more-btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: #fff;
+}
+
+body.dark-mode .modal-content {
+    background: rgba(28,33,43,0.60);
+    color: #e6e6e6;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    box-shadow: 0 8px 40px 0 rgba(31,38,135,0.22), 0 1.5px 8px 0 rgba(31,38,135,0.10);
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+}
+
+body.dark-mode .modal-image-wrap {
+    background-color: #1c212b;
+}
+
+
+body.dark-mode .modal-nav {
+    background: transparent;
+    /* color intentionally not set here to allow specific popup color rules to apply */
+}
+
+body.dark-mode .modal-close {
+    color: #e6e6e6;
+}
+
+body.dark-mode .modal-category {
+    color: #e0e0e6;
+}
+
+body.dark-mode .item-link {
+    background: rgba(28,33,43,0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-color: #2a2d35;
+}
+
+body.dark-mode .item-link:hover {
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .item-title,
+body.dark-mode .item-link:hover .item-title {
+    color: var(--white-darker);
+}
+
+body.dark-mode .item-category,
+body.dark-mode .item-link .item-category,
+body.dark-mode .item-link:visited .item-category,
+body.dark-mode .item-link:active .item-category,
+body.dark-mode .item-link:focus .item-category {
+    color: #e0e0e6 !important;
+}
+
+body.dark-mode .site-footer {
+    background: transparent;
+    border-top-color: transparent;
+}
+
+body.dark-mode .site-footer dt {
+    color: var(--white-darker);
+}
+
+body.dark-mode .site-footer h3 {
+    color: var(--white-darker);
+}
+
+body.dark-mode .site-footer dd {
+    color: var(--white-darker);
+}
+
+body.dark-mode .site-footer .container {
+    border-top-color: #2a2d35;
+}
+
+body.dark-mode .footer-content {
+    border-top-color: #2a2d35;
+}
+
+
+body.dark-mode .footer-link {
+    color: var(--white-darker); /* dark mode: slightly darker white */
+}
+
+body.dark-mode .footer-link:hover {
+    color: var(--accent-color);
+}
+
+body.dark-mode .copyright {
+    color: var(--white-darker); /* dark mode: slightly darker white */
+}
+
+body.dark-mode .footer-info {
+    color: var(--white-darker);
+}
+
+/* Add top margin to the first row in each status section for consistent spacing */
+.site-footer dl > div:first-child {
+    margin-top: 10px;
+}
+
+/* ----------------------
+   Tablet / Small Desktop
+   ---------------------- */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 25px;
+    }
+}
+
+/* ----------------------
+   Large Phones / Small Tablets
+   ---------------------- */
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 0 30px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-wrapper {
+        padding: 20px 0; /* keep vertical space but match main-nav horizontal padding */
+    }
+    
+    .portfolio-header {
+        padding: 100px 30px 50px;
+    }
+    
+    .main-title {
+        font-size: 40px;
+    }
+    
+    .intro-text {
+        font-size: 18px;
+    }
+    
+    .intro-description {
+        font-size: 16px;
+    }
+    
+    .portfolio-section {
+        padding: 0 30px 0px; /* reduce extra space below "More" on small screens */
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    
+    .site-footer {
+        padding: 30px 30px 40px;
+    }
+}
+
+/* ----------------------
+   Small Phones
+   ---------------------- */
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 32px;
+    }
+    .item-title {
+        font-size: 16px;
+    }
+    .site-footer .container {
+        flex-direction: column;
+        gap: 0;
+    }
+    .site-footer section {
+        margin-top: 16px;
+    }
+}
