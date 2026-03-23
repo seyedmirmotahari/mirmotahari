@@ -1599,3 +1599,43 @@ body.dark-mode .footer-info {
         margin-top: 16px;
     }
 }
+
+/* iPhone 7/8/SE sized screens: force centered and fully-fitted images */
+@media (max-width: 375px) {
+    .portfolio-header,
+    .header-content,
+    .header-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .header-box {
+        aspect-ratio: 16 / 7 !important;
+        min-height: 0 !important;
+        background-size: contain !important;
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+    }
+
+    body.dark-mode .header-box {
+        background-size: contain !important;
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+    }
+
+    .portfolio-item,
+    .item-link,
+    .item-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .item-image {
+        background-size: contain !important;
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+        background-color: #f4f4f4;
+    }
+}
