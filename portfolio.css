@@ -1624,13 +1624,13 @@ body.dark-mode .footer-info {
     .header-box {
         aspect-ratio: 16 / 7 !important;
         min-height: 0 !important;
-        background-size: contain !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
 
     body.dark-mode .header-box {
-        background-size: contain !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
@@ -1644,7 +1644,7 @@ body.dark-mode .footer-info {
     }
 
     .item-image {
-        background-size: contain !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
         background-color: #f4f4f4;
