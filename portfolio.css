@@ -1529,6 +1529,27 @@ body.dark-mode .footer-info {
         overflow-x: hidden;
     }
 
+    .nav-wrapper {
+        width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .nav-logo {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: 45vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .nav-actions {
+        flex: 0 0 auto;
+        min-width: 0;
+        gap: 10px;
+    }
+
     .main-nav,
     .portfolio-header,
     .portfolio-section,
@@ -1547,6 +1568,19 @@ body.dark-mode .footer-info {
     .item-image,
     .portfolio-grid {
         max-width: 100%;
+    }
+
+    .portfolio-header,
+    .header-content,
+    .header-box {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    .header-box {
+        background-size: 100% auto;
+        background-position: center top;
     }
 
     .item-image {
