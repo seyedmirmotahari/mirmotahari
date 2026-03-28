@@ -1,4 +1,5 @@
 const portfolioItems = [
+    { title: "Point of View", category: "Design", href: "#", description: "Created for the Faculty of Fine Arts at the University of Lisbon, this series transforms the building into a cinematic space, where each student’s journey unfolds like a film—unique, evolving, and shaped by their own creative path.", shortDescription: "Cinematic journeys, unique paths", images: ["design/pointofview.jpg", "design/pointofview1.jpg", "design/pointofview2.jpg", "design/pointofview3.jpg"] },
     {
         title: "Mumbai Guidebook",
         category: "Design",
