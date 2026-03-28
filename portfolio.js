@@ -147,7 +147,7 @@ function normalizeMediaPath(assetPath) {
     }
 
     const folder = MEDIA_FOLDER_CASE_MAP[segments[0].toLowerCase()] || segments[0];
-    const filePath = segments.slice(1).join("/").toLowerCase();
+    const filePath = segments.slice(1).join("/");
     return `${folder}/${filePath}${suffix}`;
 }
 
