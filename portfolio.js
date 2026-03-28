@@ -1,5 +1,5 @@
 const portfolioItems = [
-    { title: "Point of View", category: "Design", href: "#", description: "Created for the Faculty of Fine Arts at the University of Lisbon, this series transforms the building into a cinematic space, where each student’s journey unfolds like a film—unique, evolving, and shaped by their own creative path.", shortDescription: "Cinematic journeys, unique paths", images: ["design/pointofview.jpg", "design/pointofview1.jpg", "design/pointofview2.jpg", "design/pointofview3.jpg"] },
+    { title: "Point of View", category: "Design", href: "#", description: "Created for the Faculty of Fine Arts at the University of Lisbon, this series transforms the building into a cinematic space, where each student’s journey unfolds like a film—unique, evolving, and shaped by their own creative path.", shortDescription: "Cinematic journeys, unique paths", images: ["design/pointofview1.jpg", "design/pointofview2.jpg", "design/pointofview3.jpg"], cardImage: "design/pointofview.jpg" },
     {
         title: "Mumbai Guidebook",
         category: "Design",
@@ -122,6 +122,42 @@ function safeStorageSet(key, value) {
     } catch (e) {
         // Ignore storage errors so core UI still renders
     }
+}
+
+const MEDIA_FOLDER_CASE_MAP = {
+    design: "Design",
+    illustration: "Illustration",
+    photography: "Photography",
+    photo: "Photo",
+    main: "Main"
+};
+
+function normalizeMediaPath(assetPath) {
+    if (typeof assetPath !== "string" || assetPath.trim() === "") {
+        return assetPath;
+    }
+
+    const querySplitIndex = assetPath.search(/[?#]/);
+    const rawPath = querySplitIndex === -1 ? assetPath : assetPath.slice(0, querySplitIndex);
+    const suffix = querySplitIndex === -1 ? "" : assetPath.slice(querySplitIndex);
+
+    const segments = rawPath.split("/").filter(Boolean);
+    if (segments.length < 2) {
+        return assetPath;
+    }
+
+    const folder = MEDIA_FOLDER_CASE_MAP[segments[0].toLowerCase()] || segments[0];
+    const filePath = segments.slice(1).join("/").toLowerCase();
+    return `${folder}/${filePath}${suffix}`;
+}
+
+function normalizeMediaList(list) {
+    if (!Array.isArray(list)) {
+        return [];
+    }
+    return list
+        .map((asset) => normalizeMediaPath(asset))
+        .filter((asset) => typeof asset === "string" && asset.trim() !== "");
 }
 
 function createStarLayer({
@@ -278,7 +314,7 @@ function initMusicToggle() {
         audio.loop = true;
         audio.preload = "auto";
         audio.setAttribute("playsinline", "");
-        audio.src = "main/music.mp3";
+        audio.src = normalizeMediaPath("main/music.mp3");
         audio.setAttribute("aria-hidden", "true");
         document.body.appendChild(audio);
     }
@@ -386,7 +422,7 @@ function initMusicToggle() {
 }
 
 function createPortfolioCard(item) {
-    const imageList = Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []);
+    const imageList = normalizeMediaList(Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []));
     const article = document.createElement("article");
     article.className = "portfolio-item";
 
@@ -399,7 +435,7 @@ function createPortfolioCard(item) {
     if (imageList.length > 0) {
         let imageSrc;
         if (item.cardImage) {
-            imageSrc = item.cardImage;
+            imageSrc = normalizeMediaPath(item.cardImage);
         } else {
             const randomIndex = item.randomImage === false ? 0 : Math.floor(Math.random() * imageList.length);
             imageSrc = imageList[randomIndex];
@@ -639,7 +675,7 @@ function initPortfolio() {
             if (hasModal) {
                 card.querySelector(".item-link").addEventListener("click", (event) => {
                     event.preventDefault();
-                    activeImages = Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []);
+                    activeImages = normalizeMediaList(Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []));
                     activeIndex = 0;
                     modalTitle.textContent = item.title;
                     modalCategory.innerHTML = item.description || item.category;
@@ -837,8 +873,8 @@ function initPortfolio() {
                 siteMusic.muted = true;
             }
 
-            mohsenVoiceAudio = new Audio("main/1.wav");
-            mohsenMusicAudio = new Audio("main/2.wav");
+            mohsenVoiceAudio = new Audio(normalizeMediaPath("main/1.wav"));
+            mohsenMusicAudio = new Audio(normalizeMediaPath("main/2.wav"));
             mohsenVoiceAudio.preload = "auto";
             mohsenMusicAudio.preload = "auto";
 
@@ -877,7 +913,7 @@ function initPortfolio() {
         if (profileTrigger) {
             profileTrigger.addEventListener("click", (event) => {
                 event.preventDefault();
-                activeImages = ["photo/mohsen.mp4"];
+                activeImages = normalizeMediaList(["photo/mohsen.mp4"]);
                 activeIndex = 0;
                 modalTitle.textContent = "Mohsen Mirmotahari";
                 modalCategory.innerHTML = "<p>Mohsen was educated in Iran, India, Malaysia, and Portugal. He is currently a PhD student in Communication Design at the Faculty of Fine Arts, University of Lisbon. His research investigates sustainable digital design practices and promotes them among digital designers. His academic background includes a master’s degree in design (Visual Communication) from the Indian Institute of Technology Bombay (IIT Bombay), a bachelor’s degree in fine arts (Visual Communication Design) from the University of Pune, India, and research experience at the University of Malaya, Malaysia. </p><p style=\"text-indent: 20px; margin-top: 10px;\">With over two decades of professional experience, Mohsen has worked as a designer across print and digital publications and has participated in more than fifteen exhibitions worldwide. He founded <i>Mirmotahari Design Studio</i> in Iran and collaborates with companies in France, Germany, and Portugal. He is also the founder of <a href=\"#\" class=\"open-lowimpact\"><i>lowimpact.design</i></a>, a project that both follows and presents sustainable digital design practices.</p>";
@@ -905,7 +941,7 @@ function initPortfolio() {
                     if (modalImageWrap) modalImageWrap.style.display = 'none';
                     if (modalImage) { modalImage.innerHTML = ''; modalImage.style.backgroundImage = 'none'; }
                     if (modalCategory) {
-                        modalCategory.innerHTML = '<img src="main/Dino2.png" alt="Dino" class="dino-modal-img">' +
+                        modalCategory.innerHTML = `<img src="${normalizeMediaPath("main/Dino2.png")}" alt="Dino" class="dino-modal-img">` +
                             '<div class="dino-popup-text">Every second we use digital design, we consume energy and increase our carbon footprint. If we don\'t act responsibly, we risk resource shortages and rising pollution. It\'s time to embrace sustainable digital design.</div>';
                     }
                 } catch(e) {}
@@ -931,7 +967,7 @@ function initPortfolio() {
 
             const item = portfolioItems.find(i => i.title && i.title.toLowerCase() === title.toLowerCase());
             if (!item) return;
-            activeImages = Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []);
+            activeImages = normalizeMediaList(Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []));
             activeIndex = 0;
             modalTitle.textContent = item.title;
             modalCategory.innerHTML = item.description || item.category;
