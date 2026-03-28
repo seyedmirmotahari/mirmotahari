@@ -125,11 +125,11 @@ function safeStorageSet(key, value) {
 }
 
 const MEDIA_FOLDER_CASE_MAP = {
-    design: "Design",
-    illustration: "Illustration",
-    photography: "Photography",
-    photo: "Photo",
-    main: "Main"
+    design: "design",
+    illustration: "illustration",
+    photography: "photography",
+    photo: "photo",
+    main: "main"
 };
 
 function normalizeMediaPath(assetPath) {
