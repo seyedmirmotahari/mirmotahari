@@ -162,6 +162,9 @@ html {
     --button-border: #e5e5e5;
     --white-darker: #e5e5e5; /* 10% darker than white for dark-mode white text */
     --text-day: #272727; /* day-mode black color */
+    --main-image-width: 1920;
+    --main-image-height: 639;
+    --heart-image-width: 538;
 }
 
 body {
@@ -645,8 +648,8 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 .header-box {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 6; /* flexible height based on width */
-    min-height: 180px;
+    aspect-ratio: var(--main-image-width) / var(--main-image-height);
+    min-height: 0;
     border: 0;
     background: transparent url("main/main.jpg") center/cover no-repeat;
     overflow: hidden;
@@ -663,8 +666,8 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
 /* Ensure the header stays readable at smaller sizes */
 @media (max-width: 768px) {
     .header-box {
-        aspect-ratio: 16 / 5;
-        min-height: 160px;
+        aspect-ratio: var(--main-image-width) / var(--main-image-height);
+        min-height: 0;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -682,7 +685,7 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
     }
 
     .header-box {
-        aspect-ratio: 16 / 6;
+        aspect-ratio: var(--main-image-width) / var(--main-image-height);
         min-height: 0;
         margin-top: 0px;
         margin-bottom: 0px;
@@ -690,10 +693,6 @@ body:not(.dark-mode) #music-toggle[aria-pressed="false"]:hover {
         background-position: center center;
     }
 
-    .heart-overlay {
-        width: min(28vw, 120px);
-        height: auto;
-    }
 }
 
 @media (max-width: 327px) {
@@ -742,11 +741,10 @@ body.dark-mode .header-box {
 
 .heart-overlay {
     position: absolute;
-    top: 52%;
-    left: 50.5%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
-    max-height: 100%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     pointer-events: none;
     animation: heart-blink 1.5s ease-in-out infinite;
 }
@@ -1523,7 +1521,7 @@ body.dark-mode .footer-info {
 @media (max-width: 1024px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px 25px;
+        gap: 25px;
     }
 }
 
@@ -1610,10 +1608,15 @@ body.dark-mode .footer-info {
 
     .main-nav,
     .portfolio-header,
-    .portfolio-section,
     .site-footer {
         padding-left: 14px;
         padding-right: 14px;
+        box-sizing: border-box;
+    }
+
+    .portfolio-section {
+        padding-left: 30px;
+        padding-right: 30px;
         box-sizing: border-box;
     }
 
@@ -1642,14 +1645,13 @@ body.dark-mode .footer-info {
     }
 
     .header-box {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
     }
 
     .item-image {
         background-size: cover;
         background-position: center center;
-        border: 1.5px solid var(--button-border);
         box-sizing: border-box;
     }
 
@@ -1660,6 +1662,11 @@ body.dark-mode .footer-info {
     .item-title {
         font-size: 16px;
     }
+
+    .portfolio-grid {
+        gap: 20px;
+    }
+
     .site-footer .container {
         flex-direction: column;
         gap: 0;
@@ -1707,15 +1714,15 @@ body.dark-mode .footer-info {
     }
 
     .header-box {
-        aspect-ratio: 16 / 7 !important;
+        aspect-ratio: var(--main-image-width) / var(--main-image-height) !important;
         min-height: 0 !important;
-        background-size: contain !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
 
     body.dark-mode .header-box {
-        background-size: contain !important;
+        background-size: cover !important;
         background-position: 50% 50% !important;
         background-repeat: no-repeat !important;
     }
