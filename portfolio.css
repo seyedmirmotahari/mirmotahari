@@ -1,8 +1,8 @@
 html, body, * {
-    user-select: none !important;
-    -webkit-user-select: none !important;
-    -ms-user-select: none !important;
-    -moz-user-select: none !important;
+    user-select: auto;
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    -moz-user-select: auto;
 }
 /* Make the footer dino clickable even if its wrapper disables pointer events */
 #dino-footer-wrapper img {
