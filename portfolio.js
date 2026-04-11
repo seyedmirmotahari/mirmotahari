@@ -160,6 +160,84 @@ function normalizeMediaList(list) {
         .filter((asset) => typeof asset === "string" && asset.trim() !== "");
 }
 
+function buildMediaPathCandidates(assetPath) {
+    if (typeof assetPath !== "string" || assetPath.trim() === "") {
+        return [];
+    }
+
+    const normalized = normalizeMediaPath(assetPath);
+    const querySplitIndex = normalized.search(/[?#]/);
+    const rawPath = querySplitIndex === -1 ? normalized : normalized.slice(0, querySplitIndex);
+    const suffix = querySplitIndex === -1 ? "" : normalized.slice(querySplitIndex);
+    const segments = rawPath.split("/").filter(Boolean);
+
+    if (segments.length < 2) {
+        return [normalized];
+    }
+
+    const folder = MEDIA_FOLDER_CASE_MAP[segments[0].toLowerCase()] || segments[0];
+    const filePath = segments.slice(1).join("/");
+    const pathSet = new Set([`${folder}/${filePath}${suffix}`]);
+
+    const lastSlashIndex = filePath.lastIndexOf("/");
+    const fileDir = lastSlashIndex === -1 ? "" : `${filePath.slice(0, lastSlashIndex + 1)}`;
+    const fileNameWithExt = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);
+    const extDotIndex = fileNameWithExt.lastIndexOf(".");
+
+    if (extDotIndex === -1) {
+        pathSet.add(`${folder}/${fileDir}${fileNameWithExt.toLowerCase()}${suffix}`);
+        pathSet.add(`${folder}/${fileDir}${fileNameWithExt.toUpperCase()}${suffix}`);
+        return Array.from(pathSet);
+    }
+
+    const baseName = fileNameWithExt.slice(0, extDotIndex);
+    const extension = fileNameWithExt.slice(extDotIndex);
+    const baseVariants = new Set([
+        baseName,
+        baseName.toLowerCase(),
+        baseName.toUpperCase(),
+        `${baseName.charAt(0).toUpperCase()}${baseName.slice(1)}`,
+        `${baseName.charAt(0).toLowerCase()}${baseName.slice(1)}`
+    ]);
+    const extVariants = new Set([extension, extension.toLowerCase(), extension.toUpperCase()]);
+
+    baseVariants.forEach((name) => {
+        extVariants.forEach((ext) => {
+            pathSet.add(`${folder}/${fileDir}${name}${ext}${suffix}`);
+        });
+    });
+
+    return Array.from(pathSet);
+}
+
+function createResilientImageElement(primarySrc, {
+    alt = "",
+    objectFit = "cover"
+} = {}) {
+    const img = document.createElement("img");
+    img.alt = alt;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = objectFit;
+
+    const candidates = buildMediaPathCandidates(primarySrc);
+    let candidateIndex = 0;
+
+    const tryNextSource = () => {
+        if (candidateIndex >= candidates.length) {
+            img.removeEventListener("error", tryNextSource);
+            return;
+        }
+        img.src = candidates[candidateIndex];
+        candidateIndex += 1;
+    };
+
+    img.addEventListener("error", tryNextSource);
+    tryNextSource();
+
+    return img;
+}
+
 function createStarLayer({
     container,
     count,
@@ -440,7 +518,9 @@ function createPortfolioCard(item) {
             const randomIndex = item.randomImage === false ? 0 : Math.floor(Math.random() * imageList.length);
             imageSrc = imageList[randomIndex];
         }
-        image.style.backgroundImage = `url('${imageSrc}')`;
+        const img = createResilientImageElement(imageSrc, { alt: item.title, objectFit: "cover" });
+        img.loading = "lazy";
+        image.appendChild(img);
     }
 
     const title = document.createElement("h2");
@@ -622,7 +702,10 @@ function initPortfolio() {
                 }
             } else {
                 // It's an image
-                modalImage.innerHTML = `<img src="${currentImage}" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease;" alt="">`;
+                modalImage.innerHTML = "";
+                const modalImg = createResilientImageElement(currentImage, { objectFit: "cover" });
+                modalImg.style.transition = "opacity 0.5s ease";
+                modalImage.appendChild(modalImg);
                 modalImage.style.backgroundImage = "none";
             }
         } else {
